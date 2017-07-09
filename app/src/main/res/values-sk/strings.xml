@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Banner Hanger Calculator</string>
+    <string name="app_name">Banner Kalkulačka</string>
     <string name="banner_width">Šírka bannera (mm)</string>
     <string name="hanger_padding">Rozostup (mm)</string>
     <string name="pieces">Počet kusov</string>
