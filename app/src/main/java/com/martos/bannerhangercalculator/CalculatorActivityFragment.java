@@ -3,13 +3,12 @@ package com.martos.bannerhangercalculator;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.text.Html;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import com.martos.bannerhangercalculator.calculator.CalculatedPadding;
 import com.martos.bannerhangercalculator.calculator.Calculator;
@@ -26,10 +25,10 @@ import java.util.List;
 public class CalculatorActivityFragment extends Fragment {
 
     private final Calculator calculator = new Calculator();
-
+    private final CalculatorResultAdapter resultAdapter = new CalculatorResultAdapter();
     @BindView(R.id.bannerWidthEditText) EditText widthEditText;
     @BindView(R.id.paddingEditText) EditText paddingEditText;
-    @BindView(R.id.resultLayout) LinearLayout resultLayout;
+    @BindView(R.id.resultRecyclerView) RecyclerView resultRecyclerView;
 
     public CalculatorActivityFragment() {
     }
@@ -43,6 +42,9 @@ public class CalculatorActivityFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         ButterKnife.bind(this, view);
+
+        resultRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        resultRecyclerView.setAdapter(resultAdapter);
     }
 
 
@@ -57,19 +59,7 @@ public class CalculatorActivityFragment extends Fragment {
 
             List<CalculatedPadding> calculatedPaddings = calculator.calculatedPadding(width, padding);
 
-            resultLayout.removeAllViewsInLayout();
-            for (CalculatedPadding calculatedPadding : calculatedPaddings) {
-                resultLayout.addView(createResultTextView(calculatedPadding));
-            }
+            resultAdapter.setResultList(calculatedPaddings);
         }
-    }
-
-    private TextView createResultTextView(CalculatedPadding calculatedPadding) {
-        TextView text = new TextView(getContext());
-        String resultHtml = String.format("Pocet kusov <b>%s ks</b> Odsadenie <b>%s mm</b>",
-                calculatedPadding.getPieces(),
-                calculatedPadding.getPadding());
-        text.setText(Html.fromHtml(resultHtml));
-        return text;
     }
 }
