@@ -1,4 +1,7 @@
 <resources>
-    <string name="app_name">Banner Hanger Calculator</string>
-    <string name="action_settings">Settings</string>
+    <string name="app_name" translatable="false">Banner Hanger Calculator</string>
+    <string name="banner_width">Banner width (mm)</string>
+    <string name="hanger_padding" translatable="false">Hanger padding (mm)</string>
+    <string name="pieces">Pieces</string>
+    <string name="padding">Padding (mm)</string>
 </resources>

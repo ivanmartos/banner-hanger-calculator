@@ -15,7 +15,7 @@
         android:layout_marginEnd="@dimen/content_margin"
         android:layout_marginStart="@dimen/content_margin"
         android:layout_marginTop="@dimen/content_margin"
-        android:hint="Banner width (mm)"
+        android:hint="@string/banner_width"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -34,7 +34,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/content_margin"
         android:layout_marginStart="@dimen/content_margin"
-        android:hint="Hanger padding (mm)"
+        android:hint="@string/hanger_padding"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bannerWidthInputLayout">
